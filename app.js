@@ -272,85 +272,139 @@ function loadAdminContent() {
   loadAdminVideos();
 }
 
+// Modifica la función loadStudents para obtener datos específicos de Firestore
 function loadStudents(group) {
   studentsContainer.innerHTML = '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div></div>';
   
-  const folderPath = `students-images/${group}/`;
-  const storageRef = storage.ref(folderPath);
-  
-  storageRef.listAll().then(result => {
-    studentsContainer.innerHTML = '';
-    
-    result.items.forEach(itemRef => {
-      itemRef.getDownloadURL().then(url => {
-        const studentName = itemRef.name.replace(/\.[^/.]+$/, "");
-        const col = document.createElement('div');
-        col.className = 'col-md-4 col-lg-2 mb-4';
-        col.innerHTML = `
-          <div class="student-card" onclick="flipCard(this)">
-            <div class="student-card-inner">
-              <div class="student-card-front">
-                <img src="${url}" alt="${studentName}" class="student-img">
-                <h3 class="student-name">${studentName}</h3>
-              </div>
-              <div class="student-card-back">
-                <p class="student-quote">"La educación es el pasaporte hacia el futuro"</p>
-                <p>${studentName}</p>
-                <small>3ro ${group}</small>
+  // Referencia a la colección de estudiantes en Firestore
+  db.collection('students').where('group', '==', group).get()
+    .then(querySnapshot => {
+      studentsContainer.innerHTML = '';
+      
+      if (querySnapshot.empty) {
+        studentsContainer.innerHTML = '<div class="col-12 text-center">No hay estudiantes en este grupo</div>';
+        return;
+      }
+      
+      querySnapshot.forEach(doc => {
+        const student = doc.data();
+        const folderPath = `students-images/${group}/`;
+        const imageName = `${student.name}.jpg`; // Asume que las imágenes se nombran como "Nombre.jpg"
+        const storageRef = storage.ref(folderPath + imageName);
+        
+        storageRef.getDownloadURL().then(url => {
+          const col = document.createElement('div');
+          col.className = 'col-md-4 col-lg-2 mb-4';
+          col.innerHTML = `
+            <div class="student-card" onclick="flipCard(this)">
+              <div class="student-card-inner">
+                <div class="student-card-front">
+                  <img src="${url}" alt="${student.name}" class="student-img">
+                  <h3 class="student-name">${student.name}</h3>
+                </div>
+                <div class="student-card-back">
+                  <p class="student-quote">"${student.quote || 'La educación es el pasaporte hacia el futuro'}"</p>
+                  <p>${student.name}</p>
+                  <small>3ro ${group}</small>
+                </div>
               </div>
             </div>
-          </div>
-        `;
-        studentsContainer.appendChild(col);
+          `;
+          studentsContainer.appendChild(col);
+        }).catch(() => {
+          // Si no encuentra la imagen, muestra un placeholder
+          const col = document.createElement('div');
+          col.className = 'col-md-4 col-lg-2 mb-4';
+          col.innerHTML = `
+            <div class="student-card" onclick="flipCard(this)">
+              <div class="student-card-inner">
+                <div class="student-card-front">
+                  <img src="placeholder.jpg" alt="${student.name}" class="student-img">
+                  <h3 class="student-name">${student.name}</h3>
+                </div>
+                <div class="student-card-back">
+                  <p class="student-quote">"${student.quote || 'La educación es el pasaporte hacia el futuro'}"</p>
+                  <p>${student.name}</p>
+                  <small>3ro ${group}</small>
+                </div>
+              </div>
+            </div>
+          `;
+          studentsContainer.appendChild(col);
+        });
       });
+    })
+    .catch(error => {
+      console.error("Error loading students:", error);
+      studentsContainer.innerHTML = '<div class="col-12 text-center text-danger">Error al cargar estudiantes</div>';
     });
-  }).catch(error => {
-    console.error("Error loading students:", error);
-    studentsContainer.innerHTML = '<div class="col-12 text-center text-danger">Error al cargar estudiantes</div>';
-  });
 }
 
+// Modifica la función loadTeachers de manera similar
 function loadTeachers() {
   teachersContainer.innerHTML = '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div></div>';
   
-  const folderPath = 'teachers-images/';
-  const storageRef = storage.ref(folderPath);
-  
-  storageRef.listAll().then(result => {
-    teachersContainer.innerHTML = '';
-    
-    if (result.items.length === 0) {
-      teachersContainer.innerHTML = '<div class="col-12 text-center">No se encontraron profesores</div>';
-      return;
-    }
-    
-    result.items.forEach(itemRef => {
-      itemRef.getDownloadURL().then(url => {
-        const teacherName = itemRef.name.replace(/\.[^/.]+$/, "");
-        const col = document.createElement('div');
-        col.className = 'col-md-4 col-lg-3 mb-4';
-        col.innerHTML = `
-          <div class="student-card" onclick="flipCard(this)">
-            <div class="student-card-inner">
-              <div class="student-card-front">
-                <img src="${url}" alt="${teacherName}" class="student-img">
-                <h3 class="student-name">${teacherName}</h3>
-              </div>
-              <div class="student-card-back">
-                <p class="student-quote">"Enseñar es aprender dos veces"</p>
-                <p class="student-name">${teacherName}</p>
-                <small>Profesor</small>
+  db.collection('teachers').get()
+    .then(querySnapshot => {
+      teachersContainer.innerHTML = '';
+      
+      if (querySnapshot.empty) {
+        teachersContainer.innerHTML = '<div class="col-12 text-center">No se encontraron profesores</div>';
+        return;
+      }
+      
+      querySnapshot.forEach(doc => {
+        const teacher = doc.data();
+        const folderPath = 'teachers-images/';
+        const imageName = `${teacher.name}.jpg`;
+        const storageRef = storage.ref(folderPath + imageName);
+        
+        storageRef.getDownloadURL().then(url => {
+          const col = document.createElement('div');
+          col.className = 'col-md-4 col-lg-3 mb-4';
+          col.innerHTML = `
+            <div class="student-card" onclick="flipCard(this)">
+              <div class="student-card-inner">
+                <div class="student-card-front">
+                  <img src="${url}" alt="${teacher.name}" class="student-img">
+                  <h3 class="student-name">${teacher.name}</h3>
+                </div>
+                <div class="student-card-back">
+                  <p class="student-quote">"${teacher.quote || 'Enseñar es aprender dos veces'}"</p>
+                  <p class="student-name">${teacher.name}</p>
+                  <small>${teacher.subject || 'Profesor'}</small>
+                </div>
               </div>
             </div>
-          </div>
-        `;
-        teachersContainer.appendChild(col);
+          `;
+          teachersContainer.appendChild(col);
+        }).catch(() => {
+          // Placeholder si no encuentra la imagen
+          const col = document.createElement('div');
+          col.className = 'col-md-4 col-lg-3 mb-4';
+          col.innerHTML = `
+            <div class="student-card" onclick="flipCard(this)">
+              <div class="student-card-inner">
+                <div class="student-card-front">
+                  <img src="placeholder.jpg" alt="${teacher.name}" class="student-img">
+                  <h3 class="student-name">${teacher.name}</h3>
+                </div>
+                <div class="student-card-back">
+                  <p class="student-quote">"${teacher.quote || 'Enseñar es aprender dos veces'}"</p>
+                  <p class="student-name">${teacher.name}</p>
+                  <small>${teacher.subject || 'Profesor'}</small>
+                </div>
+              </div>
+            </div>
+          `;
+          teachersContainer.appendChild(col);
+        });
       });
+    })
+    .catch(error => {
+      console.error("Error loading teachers:", error);
+      teachersContainer.innerHTML = '<div class="col-12 text-center">Error al cargar los profesores</div>';
     });
-  }).catch(error => {
-    console.error("Error loading teachers:", error);
-    teachersContainer.innerHTML = '<div class="col-12 text-center">Error al cargar los profesores</div>';
-  });
 }
 
 function loadGalleryImages() {
