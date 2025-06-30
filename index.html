@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación 2025</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Lightbox -->
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="false" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Iniciar Sesión</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                        </div>
+                    </form>
+                    <div id="loginError" class="alert alert-danger mt-3 d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Panel de Moderador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminLoginForm">
+                        <div class="mb-3">
+                            <label for="adminEmail" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="adminEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="adminPassword" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Ingresar</button>
+                        </div>
+                    </form>
+                    <div id="adminLoginError" class="alert alert-danger mt-3 d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteConfirmationText">¿Estás seguro que deseas eliminar este elemento?</p>
+                    <p class="text-danger fw-bold">Esta acción no se puede deshacer.</p>
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (hidden until login) -->
+    <div id="mainContent" class="d-none">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+            <div class="container">
+                <a class="navbar-brand fst-italic" href="#">Generación 2025</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section1">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section2">Frase</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section3">Estudiantes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section4">Galerías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section5">Compartir</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section6">Mensajes</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-warning btn-sm ms-2" id="adminPanelBtn">Moderador</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light btn-sm ms-2" id="logoutBtn">Salir</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Section 1: Header -->
+        <section id="section1" class="py-5 text-center bg-light position-relative overflow-hidden">
+            <div class="container position-relative">
+                <div class="animate__animated animate__fadeInDown">
+                    <h1 class="fst-italic display-4 fw-bold text-primary">Generación 2025</h1>
+                    <p class="lead mt-3" id="mainPhrase">Recordando momentos, construyendo futuro</p>
+                </div>
+            </div>
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-pattern opacity-10"></div>
+        </section>
+
+        <!-- Section 2: Motivational Quote -->
+        <section id="section2" class="py-5 bg-gradient-primary text-white">
+            <div class="container text-center">
+                <div class="animate__animated animate__zoomIn">
+                    <blockquote class="blockquote fs-2" id="motivationalQuote">
+                        "El futuro pertenece a aquellos que creen en la belleza de sus sueños"
+                    </blockquote>
+                    <div class="animate__animated animate__pulse animate__infinite animate__slower mt-4">
+                        <i class="fas fa-heart fa-2x text-danger"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Students -->
+        <section id="section3" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 animate__animated animate__fadeIn">Nuestros Estudiantes</h2>
+                
+                <div class="text-center mb-4">
+                    <button class="btn btn-outline-primary me-2 group-btn active" data-group="A">3ro A</button>
+                    <button class="btn btn-outline-primary group-btn" data-group="B">3ro B</button>
+                </div>
+                
+                <div id="studentsContainer" class="row g-4">
+                    <!-- Students will be loaded here -->
+                </div>
+
+                <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeIn">Nuestros Profesores</h2>
+                
+                <div id="teachersContainer" class="row g-4">
+                    <!-- Teachers will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Galleries -->
+        <section id="section4" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 animate__animated animate__fadeIn">Galerías</h2>
+                
+                <ul class="nav nav-tabs justify-content-center mb-4" id="galleryTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="images-tab" data-bs-toggle="tab" data-bs-target="#images-tab-pane" type="button">Imágenes</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#videos-tab-pane" type="button">Videos</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="galleryTabContent">
+                    <div class="tab-pane fade show active" id="images-tab-pane" role="tabpanel">
+                        <div class="row g-3" id="imageGallery">
+                            <!-- Images will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="videos-tab-pane" role="tabpanel">
+                        <div class="row g-3" id="videoGallery">
+                            <!-- Videos will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Upload Content -->
+        <section id="section5" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 animate__animated animate__fadeIn">Comparte tus recuerdos</h2>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInLeft">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Subir Imágenes</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="uploadImageForm">
+                                    <div class="mb-3">
+                                        <label for="imageUpload" class="form-label">Selecciona una imagen</label>
+                                        <input class="form-control" type="file" id="imageUpload" accept="image/*" required>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Subir Imagen</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInRight">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Subir Videos</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="uploadVideoForm">
+                                    <div class="mb-3">
+                                        <label for="videoUpload" class="form-label">Selecciona un video</label>
+                                        <input class="form-control" type="file" id="videoUpload" accept="video/*" required>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary">Subir Video</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h4 class="mb-3">Imágenes compartidas</h4>
+                        <div class="row g-3" id="sharedImages">
+                            <!-- Shared images will appear here -->
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 mt-4">
+                        <h4 class="mb-3">Videos compartidos</h4>
+                        <div class="row g-3" id="sharedVideos">
+                            <!-- Shared videos will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Messages -->
+        <section id="section6" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 animate__animated animate__fadeIn">Deja tu mensaje</h2>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm animate__animated animate__fadeInUp">
+                            <div class="card-body">
+                                <form id="messageForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="messageName" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="messageName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="messageGroup" class="form-label">Grupo</label>
+                                            <select class="form-select" id="messageGroup" required>
+                                                <option value="" selected disabled>Selecciona tu grupo</option>
+                                                <option value="3ro A">3ro A</option>
+                                                <option value="3ro B">3ro B</option>
+                                                <option value="Profesor">Profesor</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="messageContent" class="form-label">Mensaje</label>
+                                            <textarea class="form-control" id="messageContent" rows="3" required></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="messageMedia" class="form-label">¿Deseas subir alguna imagen o video junto con tu mensaje? (Opcional)</label>
+                                            <input class="form-control" type="file" id="messageMedia" accept="image/*,video/*">
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-primary">Publicar Mensaje</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-5" id="messagesContainer">
+                            <!-- Messages will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-4 bg-dark text-white">
+            <div class="container text-center">
+                <p class="mb-0">Generación 2025 - Todos los derechos reservados</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Admin Panel (hidden until admin login) -->
+    <div id="adminPanel" class="d-none">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Panel de Moderador</h2>
+                <button class="btn btn-danger" id="exitAdminPanel">Salir del Panel</button>
+            </div>
+            
+            <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="messages-admin-tab" data-bs-toggle="tab" data-bs-target="#messages-admin-tab-pane" type="button">Mensajes</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="images-admin-tab" data-bs-toggle="tab" data-bs-target="#images-admin-tab-pane" type="button">Imágenes</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="videos-admin-tab" data-bs-toggle="tab" data-bs-target="#videos-admin-tab-pane" type="button">Videos</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="adminTabContent">
+                <div class="tab-pane fade show active" id="messages-admin-tab-pane" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Nombre</th>
+                                    <th>Grupo</th>
+                                    <th>Mensaje</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminMessagesTable">
+                                <!-- Messages for admin will appear here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="images-admin-tab-pane" role="tabpanel">
+                    <div class="row g-3" id="adminImagesTable">
+                        <!-- Images for admin will appear here -->
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="videos-admin-tab-pane" role="tabpanel">
+                    <div class="row g-3" id="adminVideosTable">
+                        <!-- Videos for admin will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app.js"></script>
+</body>
+</html>
