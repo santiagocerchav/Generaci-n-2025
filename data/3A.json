@@ -1,0 +1,520 @@
+[
+    {
+        "numero_lista": 1,
+        "grupo": "3A",
+        "matricula": "500903",
+        "nombre": "AGUIRRE HERNANDEZ, MARIA FERNANDA",
+        "shortName": "Mafer",
+        "videos": [
+            {
+                "url": "psrents-videos/frupo-a/video-1.mp4",
+                "title": "Mafer, no tienes mensajes pendientes",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 2,
+        "grupo": "3A",
+        "matricula": "500253",
+        "nombre": "ALARCON CRUZ, SARA (Charlie)",
+        "shortName": "Charlie",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Sara, no tienes mensajes pendientes",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 3,
+        "grupo": "3A",
+        "matricula": "500245",
+        "nombre": "ALCANTARA RIOS, JOSE ADRIÁN",
+        "shortName": "Adrián",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Adrián, no tienes mensajes pendientes",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 4,
+        "grupo": "3A",
+        "matricula": "500088",
+        "nombre": "APARICIO AGUILERA, JOSE CARLO",
+        "shortName": "Carlo",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 5,
+        "grupo": "3A",
+        "matricula": "500576",
+        "nombre": "CERDEIRA CHAVEZ, SANTIAGO",
+        "shortName": "Santi",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 6,
+        "grupo": "3A",
+        "matricula": "500550",
+        "nombre": "DELGADO ALCALA, ALEJANDRO FARID",
+        "shortName": "Farid",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/farid.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 7,
+        "grupo": "3A",
+        "matricula": "500265",
+        "nombre": "DELGADO VALDEZ, TISHEL",
+        "shortName": "Tichel",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/tishel.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 8,
+        "grupo": "3A",
+        "matricula": "500450",
+        "nombre": "DEWAR CANELA, MARIJOSE",
+        "shortName": "Dewar",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/marijose.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 9,
+        "grupo": "3A",
+        "matricula": "500234",
+        "nombre": "ESPINOSA GARCIA, ANDREA",
+        "shortName": "Andy",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 10,
+        "grupo": "3A",
+        "matricula": "500105",
+        "nombre": "FRANCO SANTOS, MADISON",
+        "shortName": "Mady",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/mady.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 11,
+        "grupo": "3A",
+        "matricula": "500620",
+        "nombre": "GARIBAY DELGADO, ROMINA ARIADNA",
+        "shortName": "Romy",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 12,
+        "grupo": "3A",
+        "matricula": "500264",
+        "nombre": "GONZÁLEZ CANDELAS, DIEGO",
+        "shortName": "Diego",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/diego.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 13,
+        "grupo": "3A",
+        "matricula": "500226",
+        "nombre": "GONZÁLEZ GONZÁLEZ, ANTONELLA KUXAN",
+        "shortName": "Anto",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 14,
+        "grupo": "3A",
+        "matricula": "500848",
+        "nombre": "GUTIERREZ RAMOS, ABRIL",
+        "shortName": "Aby",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 15,
+        "grupo": "3A",
+        "matricula": "500238",
+        "nombre": "HERNANDEZ AGUILAR, ELIAS",
+        "shortName": "Elías",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/elias.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 16,
+        "grupo": "3A",
+        "matricula": "500449",
+        "nombre": "HERNANDEZ RIVERA, ANGEL GABRIEL",
+        "shortName": "Angel",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/angel.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 17,
+        "grupo": "3A",
+        "matricula": "500452",
+        "nombre": "HERRERA GOMEZ, ALEXA",
+        "shortName": "Alexa",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/alexa-herrera.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 18,
+        "grupo": "3A",
+        "matricula": "500446",
+        "nombre": "HERRERA ROSAS, MARIA JOSE",
+        "shortName": "Majo",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 19,
+        "grupo": "3A",
+        "matricula": "500439",
+        "nombre": "JAMES JIMENEZ, LUISA SOPHIA",
+        "shortName": "Luisa",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/luisa.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 20,
+        "grupo": "3A",
+        "matricula": "500254",
+        "nombre": "JUAREZ ZAMORA, CAMILA FERNANDA",
+        "shortName": "Cami",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 21,
+        "grupo": "3A",
+        "matricula": "500233",
+        "nombre": "LOBATO RODRIGUEZ, JAZMIN",
+        "shortName": "Jaz",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/jaz.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 22,
+        "grupo": "3A",
+        "matricula": "500089",
+        "nombre": "MANUEL MARTINEZ, NATALIA YAMILET",
+        "shortName": "Yami",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/yami.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 23,
+        "grupo": "3A",
+        "matricula": "500266",
+        "nombre": "MAÑON ESCORZA, PAOLA",
+        "shortName": "Paola",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 24,
+        "grupo": "3A",
+        "matricula": "500100",
+        "nombre": "MARTINEZ TAPÍA, XIMENA",
+        "shortName": "Xime",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/XIMENA-MTZ.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 25,
+        "grupo": "3A",
+        "matricula": "500077",
+        "nombre": "MARTÍNEZ VAZQUEZ, JOHAN ALEXANDER",
+        "shortName": "Johan",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/johan.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 26,
+        "grupo": "3A",
+        "matricula": "500451",
+        "nombre": "NAQUID CASTRO, RIDHA",
+        "shortName": "Ridha",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/ridha.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 27,
+        "grupo": "3A",
+        "matricula": "500090",
+        "nombre": "OLVERA PÉREZ, ARMANDO GAEL",
+        "shortName": "Gael",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/gael.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 28,
+        "grupo": "3A",
+        "matricula": "500445",
+        "nombre": "ORTÍZ MARTÍNEZ, INGRID ALEXA",
+        "shortName": "Ingrid",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/ingrid.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 29,
+        "grupo": "3A",
+        "matricula": "500102",
+        "nombre": "PAEZ NAVARRETE, JOSE FERNANDO",
+        "shortName": "Paez",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/fernando-paez.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 30,
+        "grupo": "3A",
+        "matricula": "500865",
+        "nombre": "QUIJANO GARCIA, MARLON BASTIAN",
+        "shortName": "Bastian",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/bastian.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 31,
+        "grupo": "3A",
+        "matricula": "500242",
+        "nombre": "RAFAEL GARCÍA, FELIPE",
+        "shortName": "Felipe",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/felipe.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 32,
+        "grupo": "3A",
+        "matricula": "500256",
+        "nombre": "REYES ROA, VALENTINA",
+        "shortName": "Val",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/val-r-padre.mp4",
+                "title": "Vale, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 32,
+        "grupo": "3A",
+        "matricula": "500256",
+        "nombre": "REYES ROA, VALENTINA",
+        "shortName": "Val",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/val-r-madre.mp4",
+                "title": "Vale, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 33,
+        "grupo": "3A",
+        "matricula": "500269",
+        "nombre": "RINCON FLORES, MARGARITA JOSELIN",
+        "shortName": "Margarita",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/magy.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 34,
+        "grupo": "3A",
+        "matricula": "500267",
+        "nombre": "SAENZ SALASAR, DYLAN YAEL",
+        "shortName": "Dylan",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/video-1.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": false
+            }
+        ]
+    },
+    {
+        "numero_lista": 35,
+        "grupo": "3A",
+        "matricula": "500237",
+        "nombre": "SERVIN GONZALEZ, IAN SANTIAGO",
+        "shortName": "Servin",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/servin.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    },
+    {
+        "numero_lista": 36,
+        "grupo": "3A",
+        "matricula": "500098",
+        "nombre": "ZARAGOZA REALI, VALENTINA",
+        "shortName": "Zaragoza",
+        "videos": [
+            {
+                "url": "parents-videos/grupo-a/val-z.mp4",
+                "title": "Carlo, ¡Tienes un mensaje pendiente!",
+                "disponible": true
+            }
+        ]
+    }
+]
